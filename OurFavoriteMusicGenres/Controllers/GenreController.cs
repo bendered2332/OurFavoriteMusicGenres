@@ -18,10 +18,6 @@ namespace OurFavoriteMusicGenres.Controllers
             return View();
         }
 
-        public IActionResult Rap()
-        {
-            return View();
-        }
 
     }
 }
