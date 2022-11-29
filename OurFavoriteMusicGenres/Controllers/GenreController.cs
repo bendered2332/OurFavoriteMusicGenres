@@ -13,7 +13,7 @@ namespace OurFavoriteMusicGenres.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult GenreTable()
         {
             return View();
         }
