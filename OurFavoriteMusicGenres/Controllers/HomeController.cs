@@ -27,6 +27,12 @@ namespace OurFavoriteMusicGenres.Controllers
             return View();
         }
 
+        public IActionResult IndieRock()
+        {
+            return View();
+        }
+
+
         public IActionResult IndieFolk()
         {
             return View();
