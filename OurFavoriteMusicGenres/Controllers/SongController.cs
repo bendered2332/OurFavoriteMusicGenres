@@ -91,6 +91,27 @@ namespace OurFavoriteMusicGenres.Controllers
             }
               
         }
+        [HttpDelete]
+        public IActionResult DeleteSong(int id)
+        {
+            try
+            {
+                SongViewModel model = new SongViewModel();
 
+
+                Song? song = context.Songs.Find(id);
+
+                model.selectedSong = song;
+                context.Songs.Remove(model.selectedSong);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Song");
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+           
+        }
     }
 }

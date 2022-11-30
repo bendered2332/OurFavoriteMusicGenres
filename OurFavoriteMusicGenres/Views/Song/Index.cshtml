@@ -31,6 +31,10 @@
                     <td>
                         <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("UpdateSong", "Song", new {id = song.SongId})'">Update</button>
                     </td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
+
+                    </td>
                 </tr>
             }
         </tbody>
