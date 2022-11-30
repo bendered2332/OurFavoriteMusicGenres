@@ -16,12 +16,14 @@ namespace OurFavoriteMusicGenres.Models
             modelBuilder.Entity<Song>().HasData(
                 new Song
                 {
+                    SongId = 1,
                     Title = "Karma",
                     Artist = "Taylor Swift",
                     GenreId = "P"
                 },
                 new Song
                 {
+                    SongId = 2,
                     Title = "Pink Venom",
                     Artist = "BLACKPINK",
                     GenreId = "P"
@@ -51,7 +53,7 @@ namespace OurFavoriteMusicGenres.Models
                 },
                 new Genre
                 {
-                    GenreId = "H",
+                    GenreId = "HH",
                     Name = "Hip Hop"
                 }
             );
