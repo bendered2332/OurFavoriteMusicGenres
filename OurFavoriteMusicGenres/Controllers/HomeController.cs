@@ -27,11 +27,21 @@ namespace OurFavoriteMusicGenres.Controllers
             return View();
         }
 
+        public IActionResult Pop()
+        {
+            return View();
+        }
+
         public IActionResult IndieRock()
         {
             return View();
         }
 
+
+        public IActionResult IndieFolk()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

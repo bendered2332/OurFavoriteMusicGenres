@@ -1,0 +1,26 @@
+﻿@model List<Song>
+@{
+    ViewData["Title"] = "Our Favorite Songs";
+}
+
+<h1> Our Favorite Songs </h1>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model)
+        {
+            <tr>
+                <td>@song.Title</td>
+                <td>@song.Artist</td>
+                <td>@song.Genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
