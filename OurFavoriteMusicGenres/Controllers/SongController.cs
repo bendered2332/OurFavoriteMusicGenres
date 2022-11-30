@@ -36,32 +36,27 @@ namespace OurFavoriteMusicGenres.Controllers
 
         // This is the form control on the Add.cshtml page
         [HttpPost]
-        public IActionResult Edit(string title, string artist, string genre)
+        public IActionResult Edit(SongViewModel model)
         {
             try
             {
-                SongViewModel model = new SongViewModel();
-
-                model.Songs = context.Songs
-                    .Include(s => s.Genre)
-                    .OrderBy(s => s.Title)
-                    .ToList();
                 // getting Genre name by genre Id
                 Genre? data = context.Genres
-                    .Find(genre);
+                    .Find(model.selectedSong.GenreId);
 
                 //Assigning values to the song
-                Song song = new Song
-                {
-                    Title = title,
-                    Artist = artist,
-                    Genre = data,
-                    GenreId = data.GenreId,
-                    SongId = model.Songs.Count + 1
-                };
+                model.selectedSong.Genre = data;
 
                 // saving to database
-                context.Songs.Add(song);
+                if(model.selectedSong.SongId == 0)
+                {
+                    // add movie
+                    context.Songs.Add(model.selectedSong);
+                }
+                else
+                {
+                    // update movie
+                }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Song");
             }

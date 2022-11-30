@@ -5,18 +5,18 @@
 <form asp-action="Edit" method="post">
 
   <div class="form-group">
-    <label for="formGroupExampleInput">Song Title</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title" name="title">
+    <label asp-for="selectedSong.Title">Song Title</label>
+        <input type="text" class="form-control" placeholder="Enter Title" asp-for="selectedSong.Title">
   </div>
 
   <div class="form-group">
-    <label for="formGroupExampleInput2">Artists</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists" name="artist">
+        <label asp-for="selectedSong.Artist">Artists</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists" asp-for="selectedSong.Artist">
   </div>
 
     <div class="form-group">
-        <label for="formGroupExampleInput2">Genre</label>
-        <select name="genre" id="GenreId">
+        <label asp-for="selectedSong.GenreId">Genre</label>
+        <select asp-for="selectedSong.GenreId" id="GenreId">
             @foreach(Genre g in Model.Genres)
             {
                 <option value="@g.GenreId">@g.Name</option>
@@ -24,6 +24,7 @@
         </select>
     </div>
 
+    <input type="hidden" asp-for="selectedSong.SongId" />
     <input type="submit" value="Submit" class="btn btn-secondary">
 
  
