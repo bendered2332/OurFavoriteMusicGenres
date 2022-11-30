@@ -18,15 +18,19 @@
                 <th scope="col">Title</th>
                 <th scope="col">Artist</th>
                 <th scope="col">Genre</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             @foreach (Song song in Model.Songs )
             {
-                <tr>
+                <tr someData="@song.SongId">
                     <td>@song.Title</td>
                     <td>@song.Artist</td>
                     <td>@song.Genre.Name</td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("UpdateSong", "Song", new {id = song.SongId})'">Update</button>
+                    </td>
                 </tr>
             }
         </tbody>

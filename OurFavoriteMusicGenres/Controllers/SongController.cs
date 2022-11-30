@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OurFavoriteMusicGenres.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
 
 namespace OurFavoriteMusicGenres.Controllers
 {
@@ -25,7 +24,10 @@ namespace OurFavoriteMusicGenres.Controllers
 
             return View(model);
         }
-        // this is the add button which leads to the Add.Cshtml page 
+        /// <summary>
+        /// this is the add button which leads to the Add.Cshtml page 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Add()
         {
             SongViewModel model = new SongViewModel();
@@ -33,8 +35,30 @@ namespace OurFavoriteMusicGenres.Controllers
                 .ToList();
             return View(model);
         }
+        /// <summary>
+        /// When clicking on the update button this will lead to this function
+        /// using id to find song and pass it back to the form 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IActionResult UpdateSong(int id)
+        {
+            SongViewModel model = new SongViewModel();
+            model.Genres = context.Genres
+                .ToList();
 
-        // This is the form control on the Add.cshtml page
+            Song ?song = context.Songs.Find(id);
+
+            model.selectedSong = song;
+            return View("Add", model);
+        }
+
+        /// <summary>
+        /// This is the form control on the Add.cshtml page
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         [HttpPost]
         public IActionResult Edit(SongViewModel model)
         {
@@ -56,6 +80,7 @@ namespace OurFavoriteMusicGenres.Controllers
                 else
                 {
                     // update movie
+                    context.Songs.Update(model.selectedSong);
                 }
                 context.SaveChanges();
                 return RedirectToAction("Index", "Song");
