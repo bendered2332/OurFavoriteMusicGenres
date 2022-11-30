@@ -1,7 +1,4 @@
-﻿@model List<Song>
-@{
-    ViewData["Title"] = "Our Favorite Songs";
-}
+﻿@model SongViewModel
 
 <h1> Our Favorite Songs </h1>
 <br />
@@ -14,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var song in Model)
+        @foreach (Song song in Model.Songs )
         {
             <tr>
                 <td>@song.Title</td>

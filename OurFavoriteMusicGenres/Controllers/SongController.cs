@@ -7,7 +7,7 @@ namespace OurFavoriteMusicGenres.Controllers
     public class SongController: Controller
     {
         private SongContext context { get; set; }
-
+        
         public SongController(SongContext ctx)
         {
             context = ctx;
@@ -15,11 +15,12 @@ namespace OurFavoriteMusicGenres.Controllers
 
         public IActionResult SongTable()
         {
-            var songs = context.Songs
+            SongViewModel model = new SongViewModel();
+            model.Songs = context.Songs
                 .Include(s => s.Genre)
                 .OrderBy(s => s.Title)
                 .ToList();
-            return View(songs);
+            return View(model);
         }
 
 
