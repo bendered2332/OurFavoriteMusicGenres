@@ -1,24 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OurFavoriteMusicGenres.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace OurFavoriteMusicGenres.Controllers
 {
     public class SongController: Controller
     {
+        private SongContext context { get; set; }
 
-        private readonly ILogger<SongController> _logger;
-        private readonly SongContext _context;
-
-        public SongController(ILogger<SongController> logger, SongContext context)
+        public SongController(SongContext ctx)
         {
-            _logger = logger;
-            _context = context;
+            context = ctx;
         }
-
 
         public IActionResult SongTable()
         {
-            return View();
+            var songs = context.Songs
+                .Include(s => s.Genre)
+                .OrderBy(s => s.Title)
+                .ToList();
+            return View(songs);
         }
 
 
