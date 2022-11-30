@@ -12,7 +12,10 @@ namespace OurFavoriteMusicGenres.Controllers
         {
             context = ctx;
         }
-
+        public IActionResult Add()
+        {
+            return View();
+        }
         public IActionResult SongTable()
         {
             SongViewModel model = new SongViewModel();
