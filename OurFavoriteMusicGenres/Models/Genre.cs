@@ -1,4 +1,6 @@
-﻿namespace OurFavoriteMusicGenres.Models
+﻿using MessagePack;
+
+namespace OurFavoriteMusicGenres.Models
 {
     public class Genre
     {

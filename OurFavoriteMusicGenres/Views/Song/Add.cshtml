@@ -1,16 +1,33 @@
 ﻿@model SongViewModel
 
 <h1> Form pgae Good luck to whoever wants to fill this out</h1>
-<form>
+
+<form asp-action="Edit" method="post">
   <div class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+    <label for="formGroupExampleInput">Song Title</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title">
   </div>
+
   <div class="form-group">
-    <label for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+    <label for="formGroupExampleInput2">Artists</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists">
   </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Genre</label>
+        <select name="Genre" item="GenreId">
+            @foreach(Genre g in Model.Genres)
+            {
+                <option value="@g.GenreId">@g.Name</option>
+            }
+        </select>
+    </div>
+
     <input type="submit" value="Submit" class="btn btn-secondary">
 
  
+</form>
+
+<form asp-action="Edit" method="post">
+
 </form>
