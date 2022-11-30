@@ -1,8 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using OurFavoriteMusicGenres.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<SongContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SongContext")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
