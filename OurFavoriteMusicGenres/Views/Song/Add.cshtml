@@ -3,19 +3,20 @@
 <h1> Form pgae Good luck to whoever wants to fill this out</h1>
 
 <form asp-action="Edit" method="post">
+
   <div class="form-group">
     <label for="formGroupExampleInput">Song Title</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title">
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter Title" name="title">
   </div>
 
   <div class="form-group">
     <label for="formGroupExampleInput2">Artists</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists">
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists" name="artist">
   </div>
 
     <div class="form-group">
         <label for="formGroupExampleInput2">Genre</label>
-        <select name="Genre" item="GenreId">
+        <select name="genre" id="GenreId">
             @foreach(Genre g in Model.Genres)
             {
                 <option value="@g.GenreId">@g.Name</option>
@@ -28,6 +29,3 @@
  
 </form>
 
-<form asp-action="Edit" method="post">
-
-</form>
