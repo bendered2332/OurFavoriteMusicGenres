@@ -27,6 +27,11 @@ namespace OurFavoriteMusicGenres.Controllers
             return View();
         }
 
+        public IActionResult Pop()
+        {
+            return View();
+        }
+
         public IActionResult IndieRock()
         {
             return View();
