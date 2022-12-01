@@ -6,6 +6,6 @@
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="selectedSong.SongId" />
 
-    <button type="submit" class="btn btn-primary" style="padding-right:20px">Delete</button>
+    <button type="submit" class="btn btn-danger">Delete</button>
     <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
