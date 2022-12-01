@@ -29,6 +29,8 @@
         <span asp-validation-for="selectedSong.GenreId" class="text-danger"></span>
         </div>
 
+        <input type="hidden" asp-for="selectedSong.SongId" />
+
         <input type="submit" value="Submit" class="btn btn-primary">
         <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Cancel</a>
 

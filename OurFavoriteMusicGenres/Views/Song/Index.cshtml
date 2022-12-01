@@ -4,7 +4,7 @@
 <br />
 <div class="container">
 
-    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Add", "Song")'"> Add New Song </button>
+    <a asp-controller="Song" asp-action="Add">Add New Movie</a>
 
     <table class="table table-bordered table-striped">
         <thead>
@@ -23,7 +23,7 @@
                     <td>@song.Artist</td>
                     <td>@song.Genre.Name</td>
                     <td>
-                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("UpdateSong", "Song", new {id = song.SongId})'">Update</button>
+                        <a asp-controller="Song" asp-action="UpdateSong" asp-route-id="@song.SongId">Edit</a>
                         <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
                     </td>
                 </tr>
