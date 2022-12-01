@@ -100,7 +100,7 @@ namespace OurFavoriteMusicGenres.Controllers
               
         }
 
-        [HttpDelete]
+        [HttpPost]
         public IActionResult DeleteSong(int id)
         {
             try
