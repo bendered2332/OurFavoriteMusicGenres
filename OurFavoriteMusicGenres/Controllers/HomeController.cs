@@ -37,6 +37,10 @@ namespace OurFavoriteMusicGenres.Controllers
             return View();
         }
 
+        public IActionResult Techno()
+        {
+            return View();
+        }
 
         public IActionResult IndieFolk()
         {
