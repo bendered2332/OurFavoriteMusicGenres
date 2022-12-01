@@ -1,16 +1,79 @@
 ﻿@model SongViewModel
 
-<h1> Form pgae Good luck to whoever wants to fill this out</h1>
-<form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-  </div>
-    <input type="submit" value="Submit" class="btn btn-secondary">
+<h1> Add a Song </h1>
 
- 
-</form>
+    <form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row my-3">
+
+        <div class="col-sm-1">
+
+            <div class="form-group">
+                <label asp-for="selectedSong.Title">Song Title:</label>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter Title" asp-for="selectedSong.Title">
+                <span asp-validation-for="selectedSong.Title" class="text-danger"></span>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="row my-3">
+
+        <div class="col-sm-1">
+            <div class="form-group">
+                <label asp-for="selectedSong.Artist">Artists:</label>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="form-group">
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists" asp-for="selectedSong.Artist">
+                <span asp-validation-for="selectedSong.Artist" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row my-3">
+
+        <div class="col-sm-1">
+            <div class="form-group">
+                <label asp-for="selectedSong.GenreId">Genre</label>
+            </div>
+        </div>
+
+        <div class="col-sm-5">
+            <div class="form-group">
+                <select asp-for="selectedSong.GenreId" id="GenreId" class="form-control">
+                    <option value="">Select a genre</option>
+                    @foreach (Genre g in Model.Genres)
+                    {
+                        <option value="@g.GenreId">@g.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="selectedSong.GenreId" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row my-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2">
+            <input type="submit" value="Submit" class="btn btn-primary">
+
+            <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+        </div>
+    </div>
+    <input type="hidden" asp-for="selectedSong.SongId" />
+
+    </form>
+

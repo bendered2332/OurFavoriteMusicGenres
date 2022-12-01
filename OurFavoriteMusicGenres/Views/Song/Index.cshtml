@@ -1,0 +1,32 @@
+﻿@model SongViewModel
+
+<h1> Our Favorite Songs </h1>
+<br />
+<div class="container">
+
+    <a asp-controller="Song" asp-action="Add" class="btn btn-primary">Add New Song</a>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Song song in Model.Songs )
+            {
+                <tr someData="@song.SongId">
+                    <td>@song.Title</td>
+                    <td>@song.Artist</td>
+                    <td>@song.Genre.Name</td>
+                    <td>
+                        <a asp-controller="Song" asp-action="UpdateSong" asp-route-id="@song.SongId" class="btn btn-secondary">Edit</a>
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Song", new {id = song.SongId})'">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
