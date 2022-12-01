@@ -71,8 +71,6 @@ namespace OurFavoriteMusicGenres.Controllers
                 //Assigning values to the song
                 model.selectedSong.Genre = data;
 
-                if (ModelState.IsValid)
-                {
                     if (model.selectedSong.SongId == 0) { 
                         // add song
                         context.Songs.Add(model.selectedSong);
@@ -84,14 +82,6 @@ namespace OurFavoriteMusicGenres.Controllers
                     }
                     context.SaveChanges();
                     return RedirectToAction("Index", "Song");
-                }
-                else
-                {
-                    var errors = ModelState.Values.SelectMany(v => v.Errors);
-
-                    model.Genres = context.Genres.ToList();
-                    return View("Add", model);
-                }
             }
             catch(Exception e)
             {
@@ -100,27 +90,24 @@ namespace OurFavoriteMusicGenres.Controllers
               
         }
 
-        [HttpDelete]
-        public IActionResult DeleteSong(int id)
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            try
-            {
-                SongViewModel model = new SongViewModel();
+            SongViewModel model = new SongViewModel();
 
+            Song? song = context.Songs.Find(id);
 
-                Song? song = context.Songs.Find(id);
+            model.selectedSong = song;
+            return View(model);
+        }
 
-                model.selectedSong = song;
-                context.Songs.Remove(model.selectedSong);
-                context.SaveChanges();
+        [HttpPost]
+        public IActionResult Delete(SongViewModel model)
+        {
+            context.Songs.Remove(model.selectedSong);
+            context.SaveChanges();
 
-                return RedirectToAction("Index", "Song");
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-           
+            return RedirectToAction("Index", "Song");
         }
     }
 }

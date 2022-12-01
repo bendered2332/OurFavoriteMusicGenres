@@ -23,7 +23,7 @@
                     <td>@song.Genre.Name</td>
                     <td>
                         <a asp-controller="Song" asp-action="UpdateSong" asp-route-id="@song.SongId" class="btn btn-secondary">Edit</a>
-                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Delete", "Song", new {id = song.SongId})'">Delete</button>
                     </td>
                 </tr>
             }
