@@ -1,4 +1,5 @@
-﻿namespace OurFavoriteMusicGenres.Models
+﻿
+namespace OurFavoriteMusicGenres.Models
 {
     public class Genre
     {
