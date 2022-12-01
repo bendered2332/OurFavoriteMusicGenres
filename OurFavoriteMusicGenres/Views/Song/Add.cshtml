@@ -1,22 +1,20 @@
 ﻿@model SongViewModel
 
-@section scripts{
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
-
 <h1> Add a Song </h1>
 
     <form asp-action="Edit" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
 
         <div class="form-group">
             <label asp-for="selectedSong.Title">Song Title</label>
             <input type="text" class="form-control" placeholder="Enter Title" asp-for="selectedSong.Title">
+            <span asp-validation-for="selectedSong.Title" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="selectedSong.Artist">Artists</label>
             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter Artists" asp-for="selectedSong.Artist">
+            <span asp-validation-for="selectedSong.Artist" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -28,9 +26,8 @@
                 <option value="@g.GenreId">@g.Name</option>
             }
         </select>
+        <span asp-validation-for="selectedSong.GenreId" class="text-danger"></span>
         </div>
-
-        <input type="hidden" asp-for="selectedSong.SongId" />
 
         <input type="submit" value="Submit" class="btn btn-primary">
         <a asp-controller="Song" asp-action="Index" class="btn btn-secondary">Cancel</a>

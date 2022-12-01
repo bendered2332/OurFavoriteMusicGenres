@@ -47,7 +47,7 @@ namespace OurFavoriteMusicGenres.Controllers
             model.Genres = context.Genres
                 .ToList();
 
-            Song ?song = context.Songs.Find(id);
+            Song song = context.Songs.Find(id);
 
             model.selectedSong = song;
             return View("Add", model);
@@ -71,19 +71,27 @@ namespace OurFavoriteMusicGenres.Controllers
                 //Assigning values to the song
                 model.selectedSong.Genre = data;
 
-                // saving to database
-                if(model.selectedSong.SongId == 0)
+                if (ModelState.IsValid)
                 {
-                    // add movie
-                    context.Songs.Add(model.selectedSong);
+                    if (model.selectedSong.SongId == 0) { 
+                        // add song
+                        context.Songs.Add(model.selectedSong);
+                    }
+                    else
+                    {
+                        // update song
+                        context.Songs.Update(model.selectedSong);
+                    }
+                    context.SaveChanges();
+                    return RedirectToAction("Index", "Song");
                 }
                 else
                 {
-                    // update movie
-                    context.Songs.Update(model.selectedSong);
+                    var errors = ModelState.Values.SelectMany(v => v.Errors);
+
+                    model.Genres = context.Genres.ToList();
+                    return View("Add", model);
                 }
-                context.SaveChanges();
-                return RedirectToAction("Index", "Song");
             }
             catch(Exception e)
             {
@@ -91,6 +99,7 @@ namespace OurFavoriteMusicGenres.Controllers
             }
               
         }
+
         [HttpDelete]
         public IActionResult DeleteSong(int id)
         {
