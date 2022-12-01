@@ -4,8 +4,7 @@
 <br />
 <div class="container">
 
-    <a asp-controller="Song" asp-action="Add">Add New Movie</a>
-
+    <a asp-controller="Song" asp-action="Add" class="btn btn-primary">Add New Song</a>
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -23,8 +22,8 @@
                     <td>@song.Artist</td>
                     <td>@song.Genre.Name</td>
                     <td>
-                        <a asp-controller="Song" asp-action="UpdateSong" asp-route-id="@song.SongId">Edit</a>
-                        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
+                        <a asp-controller="Song" asp-action="UpdateSong" asp-route-id="@song.SongId" class="btn btn-secondary">Edit</a>
+                        <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
                     </td>
                 </tr>
             }
