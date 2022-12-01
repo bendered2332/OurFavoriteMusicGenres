@@ -1,24 +1,18 @@
 ﻿@model SongViewModel
 
-<div class="row">
-    <div class="col-sm-10">
-        <h1> Our Favorite Songs </h1>
-    </div>
-    <div class="col-sm-2">
-        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Add", "Song")'"> Add New Song </button>
-    </div>
-</div>
-
+<h1> Our Favorite Songs </h1>
 <br />
 <div class="container">
 
-    <table class="table table-striped">
+    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Add", "Song")'"> Add New Song </button>
+
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Genre</th>
-                <th scope="col"></th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,10 +24,7 @@
                     <td>@song.Genre.Name</td>
                     <td>
                         <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("UpdateSong", "Song", new {id = song.SongId})'">Update</button>
-                    </td>
-                    <td>
                         <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("DeleteSong", "Song", new {id = song.SongId})'">Delete</button>
-
                     </td>
                 </tr>
             }
